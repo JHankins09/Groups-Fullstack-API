@@ -465,3 +465,41 @@ Completed 200 OK in 14ms (Views: 4.0ms | ActiveRecord: 5.0ms)
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2240333999022301455)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/sign-in" for ::1 at 2019-07-22 12:14:29 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"a@b", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@b"], ["LIMIT", 1]]
+  [1m[36mUser Update (3.1ms)[0m  [1m[33mUPDATE "users" SET "token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["token", "b755287a74ecdfb23e7a62474821bc17"], ["updated_at", "2019-07-22 16:14:30.000644"], ["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (5.24ms)
+Completed 200 OK in 185ms (Views: 80.1ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/sign-in" for ::1 at 2019-07-22 12:14:35 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"a@b", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@b"], ["LIMIT", 1]]
+  [1m[36mUser Update (2.3ms)[0m  [1m[33mUPDATE "users" SET "token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["token", "6f7a4d1c2bde777f8901b4264e73cf6a"], ["updated_at", "2019-07-22 16:14:35.562436"], ["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.3ms)
+Completed 200 OK in 67ms (Views: 0.8ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/sign-in" for ::1 at 2019-07-22 12:16:04 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"a@b", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@b"], ["LIMIT", 1]]
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["token", "59015ab10cc4f9a848df06bb0c3f0691"], ["updated_at", "2019-07-22 16:16:04.536674"], ["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 64ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/groups" for ::1 at 2019-07-22 12:17:49 -0400
+Processing by GroupsController#create as */*
+  Parameters: {"group"=>{"Name"=>"Roomies", "Type"=>"RoomMates", "Intro"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Create (7.3ms)[0m  [1m[32mINSERT INTO "groups" ("Name", "Type", "Intro", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["Name", "Roomies"], ["Type", "RoomMates"], ["Intro", ""], ["created_at", "2019-07-22 16:17:49.992986"], ["updated_at", "2019-07-22 16:17:49.992986"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered GroupSerializer with ActiveModelSerializers::Adapter::Json (0.28ms)
+Completed 201 Created in 29ms (Views: 2.4ms | ActiveRecord: 17.6ms)
+
+
