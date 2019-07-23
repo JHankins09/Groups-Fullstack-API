@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # class GroupsController < ProtectedController
-class GroupsController < OpenReadController
+class GroupsController < ProtectedController
   before_action :set_group, only: %i[show update destroy]
 
   # GET /groups

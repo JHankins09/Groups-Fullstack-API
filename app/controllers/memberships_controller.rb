@@ -1,4 +1,4 @@
-class MembershipsController < ApplicationController
+class MembershipsController < ProtectedController
   before_action :set_membership, only: [:show, :update, :destroy]
 
   # GET /memberships
