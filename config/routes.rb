@@ -2,9 +2,12 @@
 
 Rails.application.routes.draw do
   # RESTful routes
-  resources :examples, :groups, except: %i[new edit]
+  resources :memberships, :examples,
+            :groups, :users, except: %i[new edit]
 
   # Custom routes
+  get '/users' => 'users#index'
+
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'

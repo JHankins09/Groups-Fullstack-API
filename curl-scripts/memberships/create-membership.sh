@@ -5,12 +5,11 @@ curl "http://localhost:4741/memberships" \
   --request POST \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
-  --data '{    
-        "group": {
-          "Name": "'"${NAME}"'",
-          "Type": "'"${TYPE}"'",
-          "Intro": "'"${INTRO}"'"
-        }
+  --data '{
+    "membership": {
+      "user_id": "'"${USER}"'",
+      "group_id": "'"${GROUP}"'"
+    }
   }'
 
 echo

@@ -1,9 +1,23 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin]
+  skip_before_action :authenticate, only: %i[signup signin index]
 
   # POST '/sign-up'
+  def index
+    @users = User.all
+
+    render json: @users
+  end
+
+  def update
+    if User.update(user_params)
+      render json: @users
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
   def signup
     user = User.create(user_creds)
     if user.valid?
@@ -47,6 +61,10 @@ class UsersController < ProtectedController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:email, :group_id)
+  end
 
   def user_creds
     params.require(:credentials)
