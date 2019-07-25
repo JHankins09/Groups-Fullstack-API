@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MembershipsController < ProtectedController
-  before_action :set_membership, only: [:show, :update, :destroy]
+  before_action :set_membership, only: %i[show update destroy]
 
   # GET /memberships
   def index
@@ -39,13 +41,14 @@ class MembershipsController < ProtectedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def membership_params
-      params.require(:membership).permit(:user_id, :group_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def membership_params
+    params.require(:membership).permit(:user_id, :group_id)
+  end
 end
