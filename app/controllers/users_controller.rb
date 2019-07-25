@@ -10,6 +10,11 @@ class UsersController < ProtectedController
     render json: @users
   end
 
+  # GET /user/1
+  def show
+    render json: @users
+  end
+
   def update
     if User.update(user_params)
       render json: @users

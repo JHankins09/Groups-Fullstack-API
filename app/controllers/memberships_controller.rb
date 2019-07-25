@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MembershipsController < ProtectedController
+class MembershipsController < OpenReadController
   before_action :set_membership, only: %i[show update destroy]
 
   # GET /memberships
