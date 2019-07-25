@@ -2,6 +2,7 @@
 
 class UsersController < ProtectedController
   skip_before_action :authenticate, only: %i[signup signin index]
+  before_action :set_user, only: %i[show update destroy]
 
   # POST '/sign-up'
   def index
@@ -12,7 +13,7 @@ class UsersController < ProtectedController
 
   # GET /user/1
   def show
-    render json: @users
+    render json: @user
   end
 
   def update
@@ -69,6 +70,10 @@ class UsersController < ProtectedController
 
   def user_params
     params.require(:user).permit(:email, :group_id)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   def user_creds
