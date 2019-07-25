@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class MembershipsController < OpenReadController
+class MembershipsController < ProtectedController
   before_action :set_membership, only: %i[show update destroy]
 
   # GET /memberships
   def index
-    @memberships = Membership.all
+    @memberships = current_user.memberships.all
 
     render json: @memberships
   end
@@ -17,7 +17,8 @@ class MembershipsController < OpenReadController
 
   # POST /memberships
   def create
-    @membership = Membership.new(membership_params)
+    @membership = current_user.memberships.build(membership_params)
+    # @membership = Membership.build(membership_params)
 
     if @membership.save
       render json: @membership, status: :created, location: @membership
@@ -44,7 +45,7 @@ class MembershipsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_membership
-    @membership = Membership.find(params[:id])
+    @membership = current_user.memberships.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
