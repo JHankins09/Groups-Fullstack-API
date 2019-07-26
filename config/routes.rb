@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
   # RESTful routes
   resources :memberships, :examples,
-            :groups, :users, except: %i[new edit]
+            :users, except: %i[new edit]
+  resources :groups, except: %i[new]
 
   # Custom routes
   get '/users' => 'users#index'
