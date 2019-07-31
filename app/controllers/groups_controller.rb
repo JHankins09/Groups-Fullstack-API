@@ -4,6 +4,7 @@ class GroupsController < OpenReadController
   before_action :set_group, only: %i[update destroy]
 
   # GET /groups
+  # GET /groups.json
   def index
     @groups = Group.all
 
@@ -41,7 +42,8 @@ class GroupsController < OpenReadController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
+    Group.find(params[:id]).destroy
+    # @group.destroy
 
     head :no_content
   end

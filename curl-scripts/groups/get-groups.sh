@@ -1,5 +1,8 @@
 #!/bin/bash
 
-curl --include "http://localhost:4741/groups/${ID}" \
+curl "http://localhost:4741/groups/${ID}" \
+  --include \
+  --request GET \
+  --header "Authorization: Token token=${TOKEN}"
 
 echo

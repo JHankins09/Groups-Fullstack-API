@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :examples
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
-  # belongs_to :groups, optional: true
+  belongs_to :groups, optional: true
 end
